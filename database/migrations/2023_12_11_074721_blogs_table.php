@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('image');
+            $table->boolean('show_post')->default(true);
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('blog_types')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

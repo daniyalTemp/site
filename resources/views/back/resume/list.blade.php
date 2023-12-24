@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <article class="resume active" data-page="resume">
 
         <header>
@@ -21,54 +20,39 @@
 
             <ol class="timeline-list">
 
-                <li class="timeline-item">
+                @if(isset($educations))
+                    @foreach($educations as $education)
+                        <li class="timeline-item">
 
-                    <h4 class="h4 timeline-item-title">University school of the arts</h4>
+                            <a href="{{route('dashboard.resume.editEducation' , $education->id)}}">
+                                <h4 class="h4 timeline-item-title">
+                                    {{$education->uniName}}
+                                </h4>
+                            </a>
+                            <span>{{$education->yearIN}}
+                                —
+                                @if($education->active)
+                                    Studying
+                                @else
+                                    {{$education->yearOut}}
+                                @endif
+                            </span>
 
-                    <span>2007 — 2008</span>
+                            <p class="timeline-text">
+                                {{$education->grade}}
+                            </p>
 
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos
-                        dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
+                        </li>
 
-                </li>
+                    @endforeach
+                @endif
 
-                <li class="timeline-item">
-
-                    <h4 class="h4 timeline-item-title">New york academy of art</h4>
-
-                    <span>2006 — 2007</span>
-
-                    <p class="timeline-text">
-                        Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas
-                        assumenda est
-                        omnis..
-                    </p>
-
-                </li>
-
-                <li class="timeline-item">
-
-                    <h4 class="h4 timeline-item-title">High school of art and design</h4>
-
-                    <span>2002 — 2004</span>
-
-                    <p class="timeline-text">
-                        Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed
-                        consequuntur
-                        magni dolores
-                        eos.
-                    </p>
-
-                </li>
 
             </ol>
-            
+
             <br>
-            <a href="#"  style="width: 100%;@import" class="form-btn" type="submit"  data-form-btn>
+            <a href="{{route('dashboard.resume.addEducation')}}" style="width: 100%;@import" class="form-btn"
+               type="submit" data-form-btn>
                 <ion-icon name="add"></ion-icon>
                 <span>Add</span>
             </a>
@@ -86,55 +70,39 @@
 
             <ol class="timeline-list">
 
-                <li class="timeline-item">
 
-                    <h4 class="h4 timeline-item-title">Creative director</h4>
+                @if(isset($experiences))
+                    @foreach($experiences as $experience )
+                        <li class="timeline-item">
+                            <a href="{{route('dashboard.resume.editExperience' , $experience->id)}}">
+                                <h4 class="h4 timeline-item-title">{{$experience->position}}</h4>
+                            </a>
 
-                    <span>2015 — Present</span>
+                            <span>{{$experience->yearIN}}
+                                —
+                                @if($experience->active)
+                                    Present
+                                @else
+                                    {{$experience->yearOut}}
+                                @endif
+                            </span>
 
-                    <p class="timeline-text">
-                        Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos
-                        dolores et qvuas
-                        molestias
-                        exceptur.
-                    </p>
 
-                </li>
+                            <p class="timeline-text">
+                                {{$experience->text}}
+                            </p>
 
-                <li class="timeline-item">
+                        </li>
 
-                    <h4 class="h4 timeline-item-title">Art director</h4>
+                    @endforeach
+                @endif
 
-                    <span>2013 — 2015</span>
-
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos
-                        dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
-
-                </li>
-
-                <li class="timeline-item">
-
-                    <h4 class="h4 timeline-item-title">Web designer</h4>
-
-                    <span>2010 — 2013</span>
-
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos
-                        dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
-
-                </li>
 
             </ol>
             <br>
 
-            <a href="#"  style="width: 100%;@import" class="form-btn" type="submit"  data-form-btn>
+            <a href="{{route('dashboard.resume.addExperience')}}" style="width: 100%;@import" class="form-btn"
+               type="submit" data-form-btn>
                 <ion-icon name="add"></ion-icon>
                 <span>Add</span>
             </a>
@@ -146,69 +114,35 @@
 
             <ul class="skills-list content-card">
 
-                <li class="skills-item">
+                @if(isset($skills))
+                    @foreach($skills as $skill)
+                        <li class="skills-item">
+                            <a href="{{route('dashboard.resume.editSkill' , $skill->id)}}">
+                            <div class="title-wrapper">
+                                <h5 class="h5">{{$skill->name}}</h5>
+                                <data value="{{$skill->percent}}">{{$skill->percent}}%</data>
+                            </div>
 
-                    <div class="title-wrapper">
-                        <h5 class="h5">Web design</h5>
-                        <data value="80">80%</data>
-                    </div>
 
-                    <div class="skill-progress-bg">
-                        <div class="skill-progress-fill" style="width: 80%;"></div>
-                    </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress-fill" style="width: {{$skill->percent}}%;"></div>
+                            </div>
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
 
-                </li>
-
-                <li class="skills-item">
-
-                    <div class="title-wrapper">
-                        <h5 class="h5">Graphic design</h5>
-                        <data value="70">70%</data>
-                    </div>
-
-                    <div class="skill-progress-bg">
-                        <div class="skill-progress-fill" style="width: 70%;"></div>
-                    </div>
-
-                </li>
-
-                <li class="skills-item">
-
-                    <div class="title-wrapper">
-                        <h5 class="h5">Branding</h5>
-                        <data value="90">90%</data>
-                    </div>
-
-                    <div class="skill-progress-bg">
-                        <div class="skill-progress-fill" style="width: 90%;"></div>
-                    </div>
-
-                </li>
-
-                <li class="skills-item">
-
-                    <div class="title-wrapper">
-                        <h5 class="h5">WordPress</h5>
-                        <data value="50">50%</data>
-                    </div>
-
-                    <div class="skill-progress-bg">
-                        <div class="skill-progress-fill" style="width: 50%;"></div>
-                    </div>
-
-                </li>
 
             </ul>
             <br>
 
-            <a href="#"  style="width: 100%;@import" class="form-btn" type="submit"  data-form-btn>
+            <a href="{{route('dashboard.resume.addSkill')}}" style="width: 100%;@import" class="form-btn" type="submit"
+               data-form-btn>
                 <ion-icon name="add"></ion-icon>
                 <span>Add</span>
             </a>
         </section>
 
     </article>
-
-
 
 @endsection

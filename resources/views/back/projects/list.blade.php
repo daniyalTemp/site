@@ -18,51 +18,38 @@
         <section class="projects">
 
 
-
-
             <ul class="project-list">
 
-                <li class="project-item  active" data-filter-item data-category="web development">
-                    <a href="#">
 
-                        <figure class="project-img">
-                            <div class="project-item-icon-box">
-                                <ion-icon name="create-outline"></ion-icon>
-                            </div>
+                @if(isset($projects))
+                    @foreach($projects as $project)
+                        <li class="project-item  active" data-filter-item data-category="web development">
+                            <a href="{{route('dashboard.projects.edit', $project->id)}}">
 
-                            <img src="{{asset('assets/images/project-1.jpg')}}" alt="finance" loading="lazy">
-                        </figure>
+                                <figure class="project-img">
 
-                        <h3 class="project-title">Finance</h3>
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="create-outline"></ion-icon>
+                                    </div>
 
-                        <p class="project-category">Web development</p>
+                                    <img src="{{asset('storage/images/projects'.'/'.$project->image)}}" alt="finance" loading="lazy">
+                                </figure>
 
-                    </a>
-                </li> <li class="project-item  active" data-filter-item data-category="web development">
-                    <a href="#">
+                                <h3 class="project-title">{{$project->title}}</h3>
 
-                        <figure class="project-img">
+                                <p class="project-category">{{$project->Type()->get()[0]->name}}</p>
 
-                            <div class="project-item-icon-box">
-                                <ion-icon name="create-outline"></ion-icon>
-                            </div>
+                            </a>
+                        </li>
 
-                            <img src="{{asset('assets/images/project-1.jpg')}}" alt="finance" loading="lazy">
-                        </figure>
-
-                        <h3 class="project-title">Finance</h3>
-
-                        <p class="project-category">Web development</p>
-
-                    </a>
-                </li>
-
+                    @endforeach
+                @endif
 
 
             </ul>
             <br>
             <br>
-            <a href="#"  style="width: 100%;@import" class="form-btn" type="submit"  data-form-btn>
+            <a href="{{route('dashboard.projects.new')}}" style="width: 100%;@import" class="form-btn" type="submit" data-form-btn>
                 <ion-icon name="add"></ion-icon>
                 <span>Add</span>
             </a>
@@ -70,7 +57,5 @@
         </section>
 
     </article>
-
-
 
 @endsection

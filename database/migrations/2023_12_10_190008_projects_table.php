@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('website');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('project_types')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('uniName');
             $table->enum('grade' ,['phd','bachelor' , 'master','diploma']);
             $table->boolean('active');
-            $table->date('yearIN');
-            $table->date('yearOut')->nullable()->default(null);
+            $table->string('yearIN');
+            $table->string('yearOut')->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -30,12 +30,45 @@
                     <li class="contact-item">
 
                         <div class="icon-box">
+                            <ion-icon name="man-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">First Name</p>
+                            <input type="text" name="firstName" value="{{old('firstName') ? old('firstName') : $config->firstName }}" class="form-input" placeholder="firstName"
+                                   data-form-input>
+                        </div>
+
+                    </li>
+
+                    <li class="contact-item">
+
+                        <div class="icon-box">
+                            <ion-icon name="man-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Last Name</p>
+
+                            <input type="text" name="lastName"
+                                   value="{{old('lastName') ? old('lastName') : $config->lastName }}"
+                                   class="form-input" placeholder="lastName"
+                                   data-form-input>
+                        </div>
+
+                    </li>
+
+
+                    <li class="contact-item">
+
+                        <div class="icon-box">
                             <ion-icon name="mail-outline"></ion-icon>
                         </div>
 
                         <div class="contact-info">
                             <p class="contact-title">Email</p>
-                            <input type="email" name="email" value="{{old('email') ? old('email') : $config->email }}" class="form-input" placeholder="Email address"
+                            <input type="email" name="email" value="{{old('email') ? old('email') : $config->email }}"
+                                   class="form-input" placeholder="Email address"
                                    data-form-input>
                         </div>
 

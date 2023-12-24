@@ -18,7 +18,7 @@ class project extends Model
     ];
 
     public function Type(){
-        return $this->hasOne(project_type::class ,'type_id' );
+        return $this->hasOne(project_type::class ,'id' , 'type_id' );
     }
 
 }

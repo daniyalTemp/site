@@ -3,15 +3,43 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\config;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class authController extends Controller
 {
+    private function getConfig()
+    {
+        $config = config::all();
+        if (count($config) == 0) {
+            $config = config::create([
+                'firstName' => 'init',
+                'lastName' => 'init',
+                'email' => 'init',
+                'phone' => 'init',
+                'instagram' => 'init',
+                'telegram' => 'init',
+                'github' => 'init',
+                'linkedin' => 'init',
+                'youtube' => 'init',
+                'image' => 'init',
+                'googleApi' => 'init',
+                'about' => 'init',
+                'birthday' => '2023-12-13'
+            ]);
+        } else {
+            $config = $config[0];
+        }
+        return $config;
+    }
+
     public function login()
     {
-        return view('front.login');
+
+        $config=$this->getConfig();
+        return view('front.login' , compact('config'));
     }
 
     public function doLogin(Request $request)
@@ -50,5 +78,11 @@ class authController extends Controller
             'password'=>$request->password
             ]);
 
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

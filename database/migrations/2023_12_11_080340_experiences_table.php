@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('position');
             $table->boolean('active');
-            $table->date('yearIN');
-            $table->date('yearOut')->nullable()->default(null);
+            $table->string('yearIN');
+            $table->string('yearOut')->nullable()->default(null);
             $table->text('text');
             $table->timestamps();
         });

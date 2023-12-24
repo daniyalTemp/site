@@ -18,7 +18,8 @@
         <section class="about-text">
 
 
-            {{$config->about}}
+            @include('back.config.about')
+{{--            {{$config->about}}--}}
             <br>
             <br>
 
@@ -40,6 +41,35 @@
             <h3 class="h3 service-title">Contact info</h3>
 
             <ul style="grid-template-columns: 1fr 1fr;" class="contacts-list">
+
+                <li class="contact-item">
+
+                    <div class="icon-box">
+                        <ion-icon name="man-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">First Name</p>
+
+                        <a  class="contact-link">{{$config->firstName}}</a>
+                    </div>
+
+                </li>
+
+                <li class="contact-item">
+
+                    <div class="icon-box">
+                        <ion-icon name="man-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Last Name</p>
+
+                        <a class="contact-link">{{$config->lastName}}</a>
+                    </div>
+
+                </li>
+
 
                 <li class="contact-item">
 
@@ -189,7 +219,8 @@
                         <li class="service-item">
 
                             <div class="service-icon-box">
-                                <img src="{{(asset('storage/images/services').'/'.$service->image  )}}" alt="design icon"
+                                <img src="{{(asset('storage/images/services').'/'.$service->image  )}}"
+                                     alt="design icon"
                                      width="40">
 
 

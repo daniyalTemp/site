@@ -7,13 +7,13 @@
     <div class="sidebar-info">
 
         <figure class="avatar-box">
-            <img style="  border-radius:30%" src="./assets/images/my-avatar.png" alt="daniyal roomiyani"  width="80">
+            <img style="  border-radius:30%" src="{{asset('./assets/images/my-avatar.png')}}" alt="{{$config->firstName.' '.$config->lastName}}"  width="80">
         </figure>
 
         <div class="info-content">
-            <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+            <h1 class="name" title="{{$config->firstName . ' '.$config->lastName}}">{{$config->firstName . ' '.$config->lastName}}</h1>
 
-            <p class="title">Web developer</p>
+            <p class="title">Developer</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -39,7 +39,7 @@
                 <div class="contact-info">
                     <p class="contact-title">Email</p>
 
-                    <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
+                    <a href="mailto:{{$config->email}}" class="contact-link">{{$config->email}}</a>
                 </div>
 
             </li>
@@ -53,7 +53,7 @@
                 <div class="contact-info">
                     <p class="contact-title">Phone</p>
 
-                    <a href="tel:+12133522795" class="contact-link">+1 (213) 352-2795</a>
+                    <a href="tel:{{$config->phone}}" class="contact-link">{{$config->phone}}</a>
                 </div>
 
             </li>
@@ -67,7 +67,7 @@
                 <div class="contact-info">
                     <p class="contact-title">Birthday</p>
 
-                    <time datetime="1982-06-23">June 23, 1982</time>
+                    <time datetime="1982-06-23">{{$config->birthday}}</time>
                 </div>
 
             </li>
@@ -81,7 +81,7 @@
                 <div class="contact-info">
                     <p class="contact-title">Location</p>
 
-                    <address>Sacramento, California, USA</address>
+                    <address>{{$config->address}}</address>
                 </div>
 
             </li>
@@ -92,24 +92,32 @@
 
         <ul class="social-list">
 
+
+
+
+
             <li class="social-item">
-                <a href="#" class="social-link">
-                    <ion-icon name="logo-facebook"></ion-icon>
+                <a href="//www.github.com/{{$config->github}}" target="_blank" class="social-link">
+                    <ion-icon name="logo-github"></ion-icon>
                 </a>
             </li>
 
             <li class="social-item">
-                <a href="#" class="social-link">
-                    <ion-icon name="logo-twitter"></ion-icon>
+                <a href="//{{$config->linkedin}}"  target="_blank" class="social-link">
+                    <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
             </li>
 
             <li class="social-item">
-                <a href="#" class="social-link">
+                <a href="https://t.me/{{$config->telegram}}"target="_blank" class="social-link">
+                    <ion-icon name="paper-plane"></ion-icon>
+                </a>
+            </li>
+            <li class="social-item">
+                <a href="//www.instagram.com/{{$config->instagram}}/" target="_blank" class="social-link">
                     <ion-icon name="logo-instagram"></ion-icon>
                 </a>
             </li>
-
         </ul>
 
     </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('fullName');
-            $table->enum('sex' ,['male','female']);
+            $table->enum('sex' ,['male','female'])->default('male');
             $table->text('text');
             $table->timestamps();
         });

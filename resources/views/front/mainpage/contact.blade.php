@@ -11,9 +11,7 @@
 
     <section class="mapbox" data-mapbox>
         <figure>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-                width="400" height="300" loading="lazy"></iframe>
+            <iframe width="100%" height="600" src="https://map.ir/iframe/lat/34.390263/lng/47.113296/z/17/p/اینجا هستم              "></iframe>
         </figure>
     </section>
 
@@ -21,17 +19,23 @@
 
         <h3 class="h3 form-title">Contact Form</h3>
 
-        <form action="#" class="form" data-form>
+        <form action="{{route('contactMe')}}"  method="post" class="form" data-form>
+            {{csrf_field()}}
 
+            <div class="input-wrapper" style="grid-template-columns: 1fr">
+                <input type="text" name="fullName" class="form-input" placeholder="Full name" required
+                       data-form-input>
+
+            </div>
             <div class="input-wrapper">
-                <input type="text" name="fullname" class="form-input" placeholder="Full name" required
+                <input type="text" name="phone" class="form-input" placeholder="phone" required
                        data-form-input>
 
                 <input type="email" name="email" class="form-input" placeholder="Email address" required
                        data-form-input>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required
+            <textarea name="text" class="form-input" placeholder="Your Message" required
                       data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>

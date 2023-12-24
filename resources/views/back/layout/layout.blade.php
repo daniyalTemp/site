@@ -15,6 +15,8 @@
     <!--
       - custom css link
     -->
+{{--    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">--}}
+
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
     <!-- Include Editor style. -->

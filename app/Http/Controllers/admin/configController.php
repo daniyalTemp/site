@@ -10,6 +10,7 @@ use App\Models\service;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
+use Illuminate\Support\Facades\File;
 
 class configController extends Controller
 {
@@ -61,6 +62,18 @@ class configController extends Controller
 
         $config = $this->getConfig();
         $config->about = $request->text;
+//
+//        if (file_exists('/about.html')){
+//            file
+//        }
+
+        $myfile = fopen("../resources/views/back/config/about.blade.php", "w") ;
+
+        fwrite($myfile, $request->text);
+        fclose($myfile);
+
+
+//        dd($f);
         $config->save();
 //        dd($request->all());
         return redirect()->route('dashboard.config');
@@ -86,6 +99,8 @@ class configController extends Controller
             "telegram" => "required",
             "linkedIn" => "required",
             "instagram" => "required",
+            "lastName" => "required",
+            "firstName" => "required",
         ]);
 
 
@@ -98,6 +113,8 @@ class configController extends Controller
         $config->telegram = $request->telegram;
         $config->linkedIn = $request->linkedIn;
         $config->instagram = $request->instagram;
+        $config->firstName = $request->firstName;
+        $config->lastName= $request->lastName;
         $config->save();
 //        $request->dd();
         //save to config
